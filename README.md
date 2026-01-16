@@ -1,2 +1,2 @@
 # test-go-repo
-[Coverage](./coverage.svg)
+![Coverage](./coverage.svg)
