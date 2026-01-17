@@ -10,3 +10,7 @@ func TestAdd(t *testing.T) {
   assert.Equal(t, 1, Add(1, 0))
   assert.Equal(t, 10, Add(9, 1))
 }
+
+func TestSub(t *testing.T) {
+  assert.Equal(t, 1, Sub(4, 3))
+}
