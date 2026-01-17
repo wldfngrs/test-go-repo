@@ -5,7 +5,7 @@ import "fmt"
 func main() {
   sum := Add(7, 8)
   fmt.Printf("%d", sum)
-  fmt.Printf("Test statement 1")
+  fmt.Printf("Test statement 2")
 }
 
 func Add(a int, b int) int {
