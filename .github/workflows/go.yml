@@ -65,7 +65,7 @@ jobs:
 
       - name: Get SHA
         run: |
-          echo "SHA=${GITHUB_SHA::7}" >> $GITHUB_ENV
+          echo "SHA=sha-{GITHUB_SHA::7}" >> $GITHUB_ENV
 
       - name: Update values yaml
         uses: mikefarah/yq@master
