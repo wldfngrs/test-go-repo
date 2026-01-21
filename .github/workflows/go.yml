@@ -63,11 +63,15 @@ jobs:
           git commit -m "Update coverage badge"
           git push
 
+      - name: Get SHA
+        run: |
+          SHA=$(echo "$GITHUB_SHA" | head -c 7)
+
       - name: Update values yaml
         uses: mikefarah/yq@master
         with:
           cmd: |
-            yq -i '.backend.backend.tag = env(GITHUB_SHA)' values.yaml
+            yq -i '.backend.backend.tag = env(SHA)' values.yaml
 
       - name: Commit updated values yaml 
         run: |
