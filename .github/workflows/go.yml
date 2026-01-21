@@ -59,7 +59,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git pull --rebase origin main
           git add coverage.svg
           git commit -m "Update coverage badge"
           git push
@@ -87,7 +86,6 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git pull --rebase origin main
           git diff --quiet && echo "No changes to commit" && exit 0
           git add values.yaml
           git commit -m "Update values yaml"
