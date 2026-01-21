@@ -66,7 +66,7 @@ jobs:
       - name: Update values yaml
         uses: mikefarah/yq@master
         with:
-          cmd: yq -i '.backend.backend.tag = env(GITHUB_SHA:0:7)' values.yaml
+          cmd: yq -i '.backend.backend.tag = env(GITHUB_SHA):0:7' values.yaml
 
       - name: Commit updated values yaml 
         run: |
