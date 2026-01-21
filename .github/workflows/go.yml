@@ -71,7 +71,7 @@ jobs:
         uses: mikefarah/yq@master
         with:
           cmd: |
-            yq -i '.backend.backend.tag = $SHA' values.yaml
+            yq -i '.backend.backend.tag = ($SHA)' values.yaml
 
       - name: Commit updated values yaml 
         run: |
