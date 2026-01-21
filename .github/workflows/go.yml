@@ -68,20 +68,6 @@ jobs:
         with:
           cmd: yq -i '.backend.backend.tag = env(GITHUB_SHA)' values.yaml
 
-      - name: Await deployment approval
-        uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ github.TOKEN }}
-          approvers: wldfngrs
-          minimum-approvals: 1
-          issue-title: "Title"
-          issue-body: "body"
-          exclude-workflow-initiator-as-approver: false
-          fail-on-denial: true
-          additional-approved-words: ''
-          additional-denied-words: ''
-          polling-interval-seconds: 10
-
       - name: Commit updated values yaml 
         run: |
           git config user.name "github-actions"
