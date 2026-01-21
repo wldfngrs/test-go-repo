@@ -59,7 +59,7 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git pull origin main
+          git pull --rebase origin main
           git add coverage.svg
           git commit -m "Update coverage badge"
           git push
@@ -69,7 +69,7 @@ jobs:
         with:
           cmd: yq -i '.backend.backend.tag = env(GITHUB_SHA)' values.yaml
 
-      - name: Commit values.yaml
+      - name: Await deployment approval
         uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
@@ -82,10 +82,13 @@ jobs:
           additional-approved-words: ''
           additional-denied-words: ''
           polling-interval-seconds: 10
+
+      - name: Commit updated values yaml 
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git pull origin main
+          git pull --rebase origin main
+          git diff --quiet && echo "No changes to commit" && exit 0
           git add values.yaml
           git commit -m "Update values yaml"
           git push
