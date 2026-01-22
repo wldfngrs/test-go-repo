@@ -79,7 +79,7 @@ jobs:
           git config user.email "github-actions@github.com"
           git diff --quiet && echo "No changes to commit" && exit 0
           git add values.yaml
-          git commit -m "Update values yaml"
+          git commit -m "Update values yaml with env(SHA)"
           git push
 
           
