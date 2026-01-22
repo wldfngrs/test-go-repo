@@ -65,13 +65,13 @@ jobs:
 
       - name: Get SHA
         run: |
-          echo "SHA=sha-{GITHUB_SHA::7}" >> $GITHUB_ENV
+          echo "SHA={GITHUB_SHA::7}" >> $GITHUB_ENV
 
       - name: Update values yaml
         uses: mikefarah/yq@master
         with:
           cmd: |
-            yq -i '.backend.backend.tag = env(SHA)' values.yaml
+            yq -i '.backend.backend.tag = "sha-"env(SHA)' values.yaml
 
       - name: Commit updated values yaml 
         run: |
