@@ -90,4 +90,4 @@ jobs:
           git diff --quiet && echo "No changes to commit" && exit 0
           git add values.yaml
           git commit -m "Update values yaml with ${SHA}"
-          git push
+          git push -f
