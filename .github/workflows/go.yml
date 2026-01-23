@@ -14,7 +14,7 @@ on:
 
 jobs:
   build:
-
+    steps:
       - uses: actions/checkout@v4
 
       - name: Set up Go
@@ -67,7 +67,9 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
-    steps: 
+    steps:
+      - uses: actions/checkout@v4
+
       - name: Get SHA
         run: |
           echo "SHA=sha-${GITHUB_SHA::7}" >> $GITHUB_ENV
