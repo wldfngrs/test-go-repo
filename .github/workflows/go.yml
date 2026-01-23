@@ -63,6 +63,12 @@ jobs:
           git commit -m "Update coverage badge"
           git push
 
+  deploy_manifest:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:      
       - name: Get SHA
         run: |
           echo "SHA=sha-${GITHUB_SHA::7}" >> $GITHUB_ENV
