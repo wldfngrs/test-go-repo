@@ -14,8 +14,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-    steps:
+
       - uses: actions/checkout@v4
 
       - name: Set up Go
@@ -68,7 +67,9 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
-    steps:      
+    steps:
+      runs-on: ubuntu-latest      
+      
       - name: Get SHA
         run: |
           echo "SHA=sha-${GITHUB_SHA::7}" >> $GITHUB_ENV
@@ -87,5 +88,3 @@ jobs:
           git add values.yaml
           git commit -m "Update values yaml with ${SHA}"
           git push
-
-          
