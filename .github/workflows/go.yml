@@ -67,9 +67,8 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: production
-    steps:
-      runs-on: ubuntu-latest      
-      
+    runs-on: ubuntu-latest
+    steps: 
       - name: Get SHA
         run: |
           echo "SHA=sha-${GITHUB_SHA::7}" >> $GITHUB_ENV
