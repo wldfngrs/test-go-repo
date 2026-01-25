@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
   sum := Add(3, 8)
-  sub := Sub(8, 7)
+  sub := Sub(7, 7)
   fmt.Printf("%d", sum)
   fmt.Printf("%d", sub)
   fmt.Printf("Test statement 121")
