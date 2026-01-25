@@ -1,13 +1,10 @@
 namespace: gateway
-
 domain: "api.baselinehq.cloud"
-
 backend:
   backend:
     image: "ghcr.io/baselinehq/backend"
-    tag: "sha-aec8f16"
+    tag: "sha-11efac4"
     port: 8080
   config:
     credentials_secret_name: backend-credentials
     image_pull_secret: container-registry-credentials
-
