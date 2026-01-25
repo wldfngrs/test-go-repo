@@ -3,14 +3,15 @@ name: Dispatch
 on:
   workflow_dispatch:
 
+permissions:
+  contents: write
+    
 jobs:
   deploy_manifest:
     if: github.ref == 'ref/heads/main'
-    permissions:
-      contents: write
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Get SHA
         run: |
