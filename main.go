@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-  sum := Add(7, 8)
+  sum := Add(3, 8)
   sub := Sub(8, 7)
   fmt.Printf("%d", sum)
   fmt.Printf("%d", sub)
