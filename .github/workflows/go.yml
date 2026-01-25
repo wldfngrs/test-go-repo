@@ -4,13 +4,9 @@ on:
   push:
     branches:
       - "main"
-    paths-ignore:
-      - 'values.yaml'
   pull_request:
     branches: 
       - "main"
-    paths-ignore:
-      - 'values.yaml'
 
 jobs:
   build:
@@ -62,32 +58,3 @@ jobs:
           git add coverage.svg
           git commit -m "Update coverage badge"
           git push
-
-  deploy_manifest:
-    needs: build
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    environment: production
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Get SHA
-        run: |
-          echo "SHA=sha-${GITHUB_SHA::7}" >> $GITHUB_ENV
-
-      - name: Update values yaml
-        uses: mikefarah/yq@master
-        with:
-          cmd: |
-            yq -i '.backend.backend.tag = env(SHA)' values.yaml
-
-      - name: Commit updated values yaml 
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          git diff --quiet && echo "No changes to commit" && exit 0
-          git add values.yaml
-          git commit -m "Update values yaml with ${SHA}"
-          git push -f
