@@ -3,7 +3,7 @@ domain: "api.baselinehq.cloud"
 backend:
   backend:
     image: "ghcr.io/baselinehq/backend"
-    tag: "sha-11efac4"
+    tag: "sha-0876e58"
     port: 8080
   config:
     credentials_secret_name: backend-credentials
