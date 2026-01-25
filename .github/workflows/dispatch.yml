@@ -6,9 +6,9 @@ on:
 jobs:
   deploy_manifest:
     if: github.ref == 'ref/heads/main'
-    runs-on: ubuntu-latest
     permissions:
       contents: write
+    runs-on: ubuntu-latest
     steps:
       uses: actions/checkout@v4
 
